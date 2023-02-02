@@ -1,0 +1,82 @@
+// COLOR VARIABLE
+$color-primary:#c69963;
+$color-primary-dark:#B28451;
+
+$color-secondary:#101d2c;
+
+$color-grey-light-1:#f9f7f6;
+$color-grey-light-2:#aaa;
+
+$color-grey-dark-1:#54483A;
+$color-grey-dark-2:#6D5D4B;
+
+// FONT VARIABLES
+
+$font-primary:'Nunito, sans-serif';
+$font-display:'josefin Sans, sans-serif';
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;               // 10px/16px = 62.5%  -> 1rem = 10px
+}
+body{
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+.container{
+    display: grid;
+    grid-template-rows: 80vh min-content  40vw repeat(3, min-content);
+    //  1st row 80vh 2nd row min-content 3rd 40vw & 4,5,6th equal repeat 3,min-content
+    // min-content auto -> auto de-fault value not necessary to write.                                                   v need 8 col equal normally v use  1140 or 1200px therefore 1140/8 = 142px & v give 14rem approx
+
+    // grid-template-columns: repeat(8,1fr);
+    //  1140/8 (col) = 142.5px or 14rem approx
+
+    // grid-template-columns: repeat(8, 14rem); 
+    // all are fixed width col supose v decreased view port that not decreaed therefore v fix that & use minmax function
+
+    // grid-template-columns: repeat(8, minmax(14rem)); 
+    // you can say max width should me 14rem but it can be low
+
+    // grid-template-columns: repeat(8, minmax(min-content, 14rem));  
+    // but never be low min-content i.e minmum content 
+    // v have 8 col but v need side bar & therefore v add a col of 8rem
+
+    // grid-template-columns: 8rem repeat(8, minmax(min-content, 14rem));
+    
+    // now v have to center these 8 col between the end of the  view port & this side bar. v dont want to center int tne view port b/w the side bar & end of the page
+    // v add 2 more col 1 to each side of eight col one on left (side bar) & 1 right side at end both occupied the remaining space v 1fr to left 7 1fr to right
+    // grid-template-columns: 8rem 1fr repeat(8, minmax(min-content, 14rem)) 1fr;
+
+    //  one sec is betwwn eight col and rest are occupying start to end is called full-bleed Section
+    // Naming these grid sections
+
+    // grid-template-columns:    [sidebar-start] 8rem[sidebar-end]     1fr repeat(8, minmax(min-content, 14rem)) 1fr;
+
+    // grid-template-columns:[sidebar-start] 8rem[sidebar-end     full-start] 1fr repeat(8, minmax(min-content, 14rem)) 1fr [full-end]; 
+
+    // grid-template-columns:[sidebar-start] 8rem[sidebar-end full-start] 1fr     [center-start] repeat(8, minmax(min-content, 14rem))     [center-end]       1fr [full-end];
+
+    // grid-template-columns:[sidebar-start] 8rem[sidebar-end full-start] 1fr [center-start] repeat(8,      [col-start] minmax(min-content, 14rem)       [col-end]       ) [center-end] 1fr  [full-end];
+
+    // col-1 start, col-2 start upto 8
+
+    // grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start ] 1fr      minmax(6rem, 1fr)    [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end]     minmax(6rem, 1fr)            [full-end];
+    //  .......here v use minmax function & 6rem bcs v use 1fr above 2 times and when v shrink  min width is 6rem to maintain grid ........now complete layout
+
+ grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start ] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr)  [full-end];
+        // & > * {
+        //  padding: 40px;
+        //  font-size: 3rem;  temporary}
+}
+
+

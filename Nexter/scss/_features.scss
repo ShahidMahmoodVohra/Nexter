@@ -1,0 +1,33 @@
+.features{
+    // background-color: $color-grey-light-2;
+    grid-column: center-start / center-end;
+    margin: 15rem 0;
+    
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(autofit, minmax(25rem, 1fr));
+    //  v change below bcs of
+    //grid-template-rows: auto; & v will create implicit grid(not defined rows)
+    grid-gap: 6rem;
+    align-items: start; // the descripton not align in grid 3 bcs of less content 3 lines 
+}
+
+.feature{
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon{
+        fill: $color-primary;
+        height: 4.5rem;
+        width: 4.5rem;
+        // grid-row: 1/-1 it work only on explict grid v have here inplict grid no value defined;
+        grid-row: 1 / span 2;
+        transform: translateY(-1rem); // to move icon up 
+    }
+
+    &__text{
+        font-size: 1.7rem;
+    }
+}
