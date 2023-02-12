@@ -2,17 +2,39 @@
     // background-color: $color-grey-light-2;
     grid-column: center-start / center-end;
     margin: 15rem 0;
-    
-    display: grid;
+
+    // display: grid; ---------- google chrome does not support therefore code below @ supports....
     // grid-template-columns: repeat(3, 1fr); 
-    grid-template-columns: repeat(autofit, minmax(25rem, 1fr));
+    // grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     //  v change below bcs of
     //grid-template-rows: auto; & v will create implicit grid(not defined rows)
-    grid-gap: 6rem;
-    align-items: start; // the descripton not align in grid 3 bcs of less content 3 lines 
+    // grid-gap: 6rem;
+    // align-items: start; // the descripton not align in grid 3 bcs of less content 3 lines default property is strtch
+
+    @supports(display: grid) {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: 6rem;
+        align-items: start;
+    }
+    
+    @media only screen and (max-width: $bp-small) {
+        grid-column: 1 / -1;
+        overflow: hidden;
+    }
 }
 
 .feature{
+    float: left;
+    width: 33.33333%;
+    margin-bottom: 6rem;
+
+    @supports(display: grid){
+        width: auto;
+        margin-bottom: 0;
+    }
+
+
     display: grid;
     grid-template-columns: min-content 1fr;
     grid-row-gap: 1.5rem;

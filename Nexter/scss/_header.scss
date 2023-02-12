@@ -1,4 +1,93 @@
 .header{
     background-color: $color-grey-dark-1;
     grid-column: full-start / col-end 6;
+    background-image: linear-gradient(rgba($color-secondary ,.93) , rgba($color-secondary ,.93)) , url(../img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+
+    padding: 8rem;
+    padding-top: 4rem;
+
+    @media only screen and (max-width: $bp-small) {
+        grid-column: full-start / full-end;
+        padding-top: 1.2rem;
+    }
+    // @media only screen and (min-width: $bp-mob) {
+    //     grid-column: full-start / col-end 9;
+
+    // }
+
+    
+
+    display: grid;
+    // space between logo & heading & other content v use 1fr than h3 to min-content than h1 to 6rem now space between h1 and button v give 1fr but it span to entire grid cell & fot this v use align-self for vertically & justify-self for horizontally- to flex-start for moving left side & give another class header__btn in html & add css below and than v give a huge padding to header i.e 8rem v give padding-top 4rem bcs logo is on top & for center the logo v give justify-self -center . when u see it is not center for centring v use grid-temp-cloumn property - max content *pto* & center all content v use justify-content- center
+
+    // grid-template-rows: 1fr min-content 6rem 1fr; for responsive v cahange as below
+    grid-template-rows: 1fr min-content minmax(6rem, min-content )1fr;
+
+    grid-row-gap: 1.5rem;
+
+    // grid-template-columns: max-content; *pto* for respossive change this below
+    grid-template-columns: minmax(min-content, max-content);
+
+    justify-content: center;
+
+    &__logo{
+        height: 3rem;
+        justify-self: center;
+
+        @media only screen and (max-width: $bp-small) {
+            height: 2.5rem;
+        }
+    }
+
+    &__btn{
+        align-self: flex-start;
+        justify-self: flex-start;
+    }
+
+    &__seenon-text{
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-column-gap: 1.5rem;
+        align-items: center;
+
+        font-size: 1.6rem;
+        color: $color-grey-light-2;
+        
+        &::before,
+        &::after {
+
+            content: "";
+            height: 1px;
+            display: block;
+            background-color: currentColor;
+            // i.e is $color-grey-light-2. to make to line & text(seenon) b/w v use pscudo calass than grid tem col 1fr max-content & 1fr and more properties above
+        }
+
+    }
+
+    &__seenon-logos{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+        justify-items: center;
+        align-items: center;  // for responsive add this property
+
+        img{
+            // height: 2.5rem; for responsiveness v use max height & give max-width to 100% and above 
+            max-height: 2.5rem;
+            max-width: 100%;
+            filter: brightness(70%);
+
+            @media only screen and (max-width: $bp-medium) {
+                max-height: 2rem;
+            }
+            @media only screen and (max-width: $bp-small) {
+                max-height: 1.8rem;            }
+        }
+
+    }
+
+    
 }
